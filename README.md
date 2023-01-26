@@ -20,7 +20,7 @@ Random generate RSA quiz & solution write to standard output.
 
 - Message for encryption : ```ciphertext = (message ** e) % n```. <br>
   Optimization :  ```ciphertext =  powmod(message,e,n)``` .<br>
-  Criterion : ```0<=message<n```.
+  Criterion : ```0 ≤ message < n```.
 
 - Ciphertext for decryption : ```decrypted_message = (ciphertext ** d) % n```. <br>
   Optimization :   ```decrypted_message = powmod(message,e,n)```.
