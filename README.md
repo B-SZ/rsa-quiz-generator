@@ -11,8 +11,8 @@ Random generate RSA quiz & solution write to standard output.
 - Choose an encryption key is e.<br>
   Criterion : 1 < e < phi and gcd(e,phi) == 1
 
-- Compute the decryption key is d.<br>
-  Criterion : 1 < d < phi and e*d ≡ 1 (mod phi)  . ```d = modinv(e,phi)```.
+- Compute the decryption key is d : ```d = modinv(e,phi)```.<br>
+  Criterion : 1 < d < phi and e*d ≡ 1 (mod phi) .
 
 - Public key is the pair of numbers  : ```public_key = (n, e)```.
 
