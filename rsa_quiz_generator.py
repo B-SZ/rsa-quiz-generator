@@ -94,7 +94,7 @@ def quiz_generate(somePrimes , somePrimes2):
     while 1:      
       e = Crypto.Random.random.choice(
             somePrimes 
-            if Crypto.Random.random.randint(0,len(somePrimes)+len(somePrimes2))<=len(somePrimes) else 
+            if Crypto.Random.random.randint(1,len(somePrimes)+len(somePrimes2))<=len(somePrimes) else 
             somePrimes2
           )
       if 1 < e < phi and math.gcd(e,phi) == 1:
@@ -128,7 +128,7 @@ def quiz_generate(somePrimes , somePrimes2):
     decrypted_message = powmod(ciphertext,d,n)#decrypted_message = (ciphertext ** d) % n
     print(f'decrypted_message = (ciphertext ** d) % n = ({ciphertext} ** {d}) % {n} = powmod({ciphertext},{d},{n}) = {decrypted_message}')
     return result(True)
-    
+
 def quiz(p,q,e,message):
     print('RSA quiz problem:')
     print(f'p = {p}')
