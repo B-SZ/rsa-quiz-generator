@@ -4,7 +4,7 @@ Random generate RSA quiz & solution write to standard output.
 
 - RSA keys create by selecting two primes: ```p``` , ```q``` and ```p ≠ q```.
 
-- Compute the product of the two primes : ```n  = p * q```
+- Compute the product of the two primes : ```n = p * q```
 
 - Compute Euler's totient function of n : ```phi = (p-1) * (q-1)```.
 
