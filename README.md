@@ -8,17 +8,22 @@ Random generate RSA quiz & solution write to standard output.
 
 - Compute Euler's totient function of n : ```phi = (p-1) * (q-1)``` .
 
-- Choose an encryption key is e.  Criterion : 1 < e < phi and gcd(e,phi) == 1
+- Choose an encryption key is e.<br>
+  Criterion : 1 < e < phi and gcd(e,phi) == 1
 
-- Compute the decryption key is d. Criterion : 1 < d < phi and e*d ≡ 1 (mod phi)  . ```d = modinv(e,phi)```
+- Compute the decryption key is d.<br>
+  Criterion : 1 < d < phi and e*d ≡ 1 (mod phi)  . ```d = modinv(e,phi)```.
 
-- Public key is the pair of numbers  : ```public_key = (n, e)``` .
+- Public key is the pair of numbers  : ```public_key = (n, e)```.
 
 - Private key is the pair of numbers  : ```private_key = (n, d)```.
 
-- For encryption : ```ciphertext = (message ** e) % n```.  Optimization :  ```ciphertext =  powmod(message,e,n)``` . Criterion : 0<=ciphertext<n
+- For encryption : ```ciphertext = (message ** e) % n```. <br>
+  Optimization :  ```ciphertext =  powmod(message,e,n)``` .<br>
+  Criterion : 0<=ciphertext<n.
 
-- For decryption : ```decrypted_message = (ciphertext ** d) % n```.  Optimization :   ```decrypted_message = powmod(message,e,n)``` .
+- For decryption : ```decrypted_message = (ciphertext ** d) % n```. <br>
+  Optimization :   ```decrypted_message = powmod(message,e,n)``` .
 
 - Criterion : These variables  non-negative integers.
 
