@@ -16,7 +16,7 @@ Random generate RSA quiz & solution write to standard output.
 
 - Private key is the pair of numbers  : ```private_key = (n, d)```.
 
-- For encryption : ```ciphertext = (message ** e) % n```.  Optimization :  ```ciphertext =  powmod(message,e,n)``` . Criterion : 0<=ciphertext<n .
+- For encryption : ```ciphertext = (message ** e) % n```.  Optimization :  ```ciphertext =  powmod(message,e,n)``` . Criterion : 0<=ciphertext<n
 
 - For decryption : ```decrypted_message = (ciphertext ** d) % n```.  Optimization :   ```decrypted_message = powmod(message,e,n)``` .
 
