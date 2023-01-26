@@ -28,7 +28,7 @@ Random generate RSA quiz & solution write to standard output.
 - Criterion : These variables  non-negative integers.
 
 
-**Output example:**
+**Quiz & solution generated example:**
 
 ```
 RSA quiz problem:
