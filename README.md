@@ -2,14 +2,14 @@ Random generate RSA quiz & solution write to standard output.
 
 **RSA algorithm (short description):**
 
-- RSA keys create by selecting two primes: ```p``` , ```q``` and ```p  ≠ q``` .
+- RSA keys create by selecting two primes: ```p``` , ```q``` and ```p ≠ q```.
 
 - Compute the product of the two primes : ```n  = p * q```
 
-- Compute Euler's totient function of n : ```phi = (p-1) * (q-1)``` .
+- Compute Euler's totient function of n : ```phi = (p-1) * (q-1)```.
 
 - Choose an encryption key is ```e```.<br>
-  Criterion : ```1 < e < phi and gcd(e,phi) == 1```
+  Criterion : ```1 < e < phi and gcd(e,phi) == 1```.
 
 - Compute the decryption key is ```d``` : ```d = modinv(e,phi)```.<br>
   Criterion : ```1 < d < phi and e*d ≡ 1 (mod phi)```.
@@ -23,7 +23,7 @@ Random generate RSA quiz & solution write to standard output.
   Criterion : ```0<=message<n```.
 
 - Ciphertext for decryption : ```decrypted_message = (ciphertext ** d) % n```. <br>
-  Optimization :   ```decrypted_message = powmod(message,e,n)``` .
+  Optimization :   ```decrypted_message = powmod(message,e,n)```.
 
 - Criterion : These variables  non-negative integers.
 
