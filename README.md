@@ -2,27 +2,27 @@ Random generate RSA quiz & solution write to standard output.
 
 **RSA algorithm (short description):**
 
-- RSA keys create by selecting two primes: p and q and p  ≠ q .
+- RSA keys create by selecting two primes: ```p``` , ```q``` and ```p  ≠ q``` .
 
 - Compute the product of the two primes : ```n  = p * q```
 
 - Compute Euler's totient function of n : ```phi = (p-1) * (q-1)``` .
 
-- Choose an encryption key is e.<br>
-  Criterion : 1 < e < phi and gcd(e,phi) == 1
+- Choose an encryption key is ```e```.<br>
+  Criterion : ```1 < e < phi and gcd(e,phi) == 1```
 
-- Compute the decryption key is d : ```d = modinv(e,phi)```.<br>
-  Criterion : 1 < d < phi and e*d ≡ 1 (mod phi) .
+- Compute the decryption key is ```d``` : ```d = modinv(e,phi)```.<br>
+  Criterion : ```1 < d < phi and e*d ≡ 1 (mod phi)```.
 
 - Public key is the pair of numbers  : ```public_key = (n, e)```.
 
 - Private key is the pair of numbers  : ```private_key = (n, d)```.
 
-- For encryption : ```ciphertext = (message ** e) % n```. <br>
+- Message for encryption : ```ciphertext = (message ** e) % n```. <br>
   Optimization :  ```ciphertext =  powmod(message,e,n)``` .<br>
-  Criterion : 0<=ciphertext<n.
+  Criterion : ```0<=message<n```.
 
-- For decryption : ```decrypted_message = (ciphertext ** d) % n```. <br>
+- Ciphertext for decryption : ```decrypted_message = (ciphertext ** d) % n```. <br>
   Optimization :   ```decrypted_message = powmod(message,e,n)``` .
 
 - Criterion : These variables  non-negative integers.
