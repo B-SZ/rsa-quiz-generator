@@ -14,45 +14,50 @@ def powmod(a,b,n):
   deep+=1
   s = f'powmod({a},{b},{n})'
   print((' '*(2*deep))+f'powmod(a,b,n) = {s}')
-  e = a%n if b%2 == 1 else 1
-  print((' '*(2*deep))+f'e = a%n if b%2 == 1 else 1 ( = {e} )')
+  e = a % n if b % 2 == 1 else 1
+  print((' '*(2*deep))+f'e = a % n if b % 2 == 1 else 1  -->  e = {a} % {n} if {b} % 2 == 1 else 1  -->  e = {e}')
   a2 = a
-  print((' '*(2*deep))+f'a2 = a = {a2}')
-  b>>=1
-  print((' '*(2*deep))+f'b>>=1  ( = {b} )')
+  print((' '*(2*deep))+f'a2 = a  -->  a2 = {a2}')
+  print(end=(' '*(2*deep))+f'b >>= 1  -->  b = {b} >> 1 = ')
+  b >>= 1
+  print(f"{b}")
   while b>0:
-    print(end=(' '*(2*deep))+f'a2 = (a2*a2) % n = ({a2}*{a2}) % {n} = ')
-    a2 = (a2*a2) % n
+    print(end=(' '*(2*deep))+f'a2 = ( a2 * a2 ) % n  -->  a2 = ( {a2} * {a2} ) % {n} = ')
+    a2 = ( a2 * a2 ) % n
     print(f'{a2}')
     if b % 2 == 1:
-      print(end=(' '*(2*deep))+f'e = (e*a2) % n = ({e}*{a2}) % {n} = ')
+      print(end=(' '*(2*deep))+f'e = ( e * a2 ) % n  -->  e = ( {e} * {a2} ) % {n} = ')
       e = (e*a2) % n
       print(f'{e}')
-    b>>=1
-    print((' '*(2*deep))+f'b>>=1 ( = {b} )')
+    print(end=(' '*(2*deep))+f'b >>= 1  -->  b = {b} >> 1 = ')
+    b >>= 1
+    print(f"{b}")    
   print((' '*(2*deep))+f'{s} = {e}')
   deep-=1
   return e
 
 #https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm
 def egcd(a, b):
+    """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
     global deep
     deep+=1
-    if a == 0:
-        result = (b, 0, 1)
-        print((' '*(2*deep))+f'egcd({a}, {b}) = {result}')
-        deep-=1
-        return result
-    else:
-        print((' '*(2*deep))+'g, y, x = egcd(b % a, a) ; egcd(a, b) = (g, x - (b // a) * y, y)')
-        print((' '*(2*deep))+f'egcd({a}, {b})')
-        print((' '*(2*deep))+f'egcd({b} % {a}, {a}) = egcd({b % a}, {a})')
-        g, y, x = egcd(b % a, a)
-        print((' '*(2*deep))+f'egcd({b % a}, {a}) = (g, y, x) = ({g}, {y}, {x})')
-        result = (g, x - (b // a) * y, y)
-        print((' '*(2*deep))+f'egcd(a, b) = egcd({a}, {b}) = (g, x - (b // a) * y, y) = {result}')
-        deep-=1
-        return result
+    s = f"egcd(a, b) = egcd({a}, {b})"
+    print((' '*(2*deep))+s)
+    x0, x1, y0, y1 = 0, 1, 1, 0
+    print((' '*(2*deep))+f"x0, x1, y0, y1 = {x0}, {x1}, {y0}, {y1}")
+    while a != 0:
+        print(end=(' '*(2*deep))+f"(q, a), b = divmod(b, a), a  -->  (q, a), b = divmod({b}, {a}), {a}  -->  (q, a), b = ")
+        (q, a), b = divmod(b, a), a
+        print(f"({q}, {a}), {b}")
+        print(end=(' '*(2*deep))+f"y0, y1 = y1, y0 - q * y1  -->  y0, y1 = {y1}, {y0} - {q} * {y1}  -->  ")
+        y0, y1 = y1, y0 - q * y1
+        print(f"y0, y1 = {y0}, {y1}")
+        print(end=(' '*(2*deep))+f"x0, x1 = x1, x0 - q * x1  -->  x0, x1 = {x1}, {x0} - {q} * {x1}  -->  ")
+        x0, x1 = x1, x0 - q * x1
+        print(f"x0, x1 = {x0}, {x1}")
+    print((' '*(2*deep))+f"{s} = (b, x0, y0) = ({b}, {x0}, {y0})")
+    deep-=1
+    return b, x0, y0
 
 def modinv(a, m):
     global deep
@@ -153,7 +158,10 @@ def quiz_gen_and_solution(somePrimes , somePrimes2):
     quiz(values['p'],values['q'],values['e'],values['message'])
     print('\nSolution :\n'+solved_str)
 
-if __name__=='__main__':
+def main():
   somePrimes = list(sieve(1000))
   somePrimes , somePrimes2 = somePrimes[23:] , somePrimes[:23]
   quiz_gen_and_solution(somePrimes , somePrimes2)
+  
+if __name__=='__main__':
+  main()
