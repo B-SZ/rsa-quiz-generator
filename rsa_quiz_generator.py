@@ -94,7 +94,7 @@ def quiz_generate_raw(somePrimes , somePrimes2):
     while 1:      
       e = Crypto.Random.random.choice(
             somePrimes 
-            if Crypto.Random.random.randrange(1,len(somePrimes)+len(somePrimes2))<len(somePrimes) else 
+            if Crypto.Random.random.randrange(len(somePrimes)+len(somePrimes2))<len(somePrimes) else 
             somePrimes2
           )
       if 1 < e < phi and math.gcd(e,phi) == 1:
