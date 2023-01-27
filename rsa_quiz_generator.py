@@ -40,7 +40,7 @@ def egcd(a, b):
     deep+=1
     if a == 0:
         result = (b, 0, 1)
-        print((' '*deep)+f'egcd({a}, {b}) = {result}')
+        print((' '*(2*deep))+f'egcd({a}, {b}) = {result}')
         deep-=1
         return result
     else:
@@ -50,7 +50,7 @@ def egcd(a, b):
         g, y, x = egcd(b % a, a)
         print((' '*(2*deep))+f'egcd({b % a}, {a}) = (g, y, x) = ({g}, {y}, {x})')
         result = (g, x - (b // a) * y, y)
-        print((' '*deep)+f'egcd(a, b) = egcd({a}, {b}) = (g, x - (b // a) * y, y) = {result}')
+        print((' '*(2*deep))+f'egcd(a, b) = egcd({a}, {b}) = (g, x - (b // a) * y, y) = {result}')
         deep-=1
         return result
 
@@ -61,7 +61,7 @@ def modinv(a, m):
     print((' '*(2*deep))+f'modinv({a}, {m}) = egcd({a}, {m})[1] % {m}')
     g, x, y = egcd(a, m)
     if g != 1:
-        raise ModularInverseError((' '*deep)+f'modinv({a}, {m}) modular inverse does not exist')
+        raise ModularInverseError((' '*(2*deep))+f'modinv({a}, {m}) modular inverse does not exist')
     else:
         print((' '*(2*deep))+f'modinv({a}, {m}) = {x} % {m} = {x % m}')
         deep-=1
@@ -76,7 +76,7 @@ def sieve(limit):
             for n in range(i*i, limit, i):
                 a[n] = False
 
-def quiz_generate(somePrimes , somePrimes2):
+def quiz_generate_raw(somePrimes , somePrimes2):
     global deep
     deep = 0
     p,q,e,message,n,phi,d,private_key,public_key,ciphertext,decrypted_message = 11 * [None]
@@ -94,7 +94,7 @@ def quiz_generate(somePrimes , somePrimes2):
     while 1:      
       e = Crypto.Random.random.choice(
             somePrimes 
-            if Crypto.Random.random.randint(1,len(somePrimes)+len(somePrimes2))<=len(somePrimes) else 
+            if Crypto.Random.random.randrange(1,len(somePrimes)+len(somePrimes2))<len(somePrimes) else 
             somePrimes2
           )
       if 1 < e < phi and math.gcd(e,phi) == 1:
@@ -146,7 +146,7 @@ def quiz(p,q,e,message):
 def quiz_gen_and_solution(somePrimes , somePrimes2):
     stdout=sys.stdout
     sys.stdout = io.StringIO()
-    succes, values = quiz_generate(somePrimes , somePrimes2)
+    succes, values = quiz_generate_raw(somePrimes , somePrimes2)
     assert succes 
     solved_str = sys.stdout.getvalue()
     sys.stdout = stdout
