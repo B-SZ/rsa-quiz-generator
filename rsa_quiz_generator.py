@@ -41,8 +41,8 @@ def egcd(a, b):
     """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
     global deep
     deep+=1
-    s = f"egcd(a, b) = egcd({a}, {b})"
-    print((' '*(2*deep))+s)
+    s = f"egcd({a}, {b})"
+    print((' '*(2*deep))+f"egcd(a, b) = {s}")
     x0, x1, y0, y1 = 0, 1, 1, 0
     print((' '*(2*deep))+f"x0, x1, y0, y1 = {x0}, {x1}, {y0}, {y1}")
     while a != 0:
@@ -68,7 +68,7 @@ def modinv(a, m):
     if g != 1:
         raise ModularInverseError((' '*(2*deep))+f'modinv({a}, {m}) modular inverse does not exist')
     else:
-        print((' '*(2*deep))+f'modinv({a}, {m}) = {x} % {m} = {x % m}')
+        print((' '*(2*deep))+f'modinv({a}, {m}) = egcd({a}, {m})[1] % {m} = {x} % {m} = {x % m}')
         deep-=1
         return x % m
 
